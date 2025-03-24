@@ -14,19 +14,19 @@ import org.bukkit.event.Listener;
 
 @Getter(AccessLevel.PUBLIC)
 public abstract class AbstractListener implements Listener {
-	
-	private final LaunchmaniaPlugin plugin;
-	
-	public AbstractListener(LaunchmaniaPlugin plugin) {
-		this.plugin = plugin;
-	}
-	
-	public void register() {
-		plugin.getServer().getPluginManager().registerEvents(this, plugin);
-	}
-	
-	public LaunchmaniaPlugin plugin() {
-		return plugin;
-	}
-	
+
+    private final LaunchmaniaPlugin plugin;
+
+    public AbstractListener(LaunchmaniaPlugin plugin) {
+        this.plugin = plugin;
+    }
+
+    public void register() {
+        plugin.getServer().getPluginManager().registerEvents(this, plugin);
+    }
+
+    public LaunchmaniaPlugin plugin() {
+        return plugin;
+    }
+
 }
