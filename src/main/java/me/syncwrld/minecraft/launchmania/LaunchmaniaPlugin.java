@@ -38,7 +38,7 @@ public class LaunchmaniaPlugin extends JavaPlugin {
 	private final GitHubUpdateChecker updateChecker = new GitHubUpdateChecker(
 	  this,
 	  "syncwrld",
-	  "launchmania-test",
+	  "launchmania",
 	  30,
 	  true
 	);
