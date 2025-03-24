@@ -4,6 +4,7 @@ import com.cryptomorin.xseries.XMaterial;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.Accessors;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 
@@ -13,11 +14,11 @@ import java.util.Set;
 @Getter(AccessLevel.PUBLIC)
 @Accessors(fluent = true)
 public class SettingsHolder {
-	private final Set<ItemStack> blockWhitelist = new HashSet<>();
+	private final Set<Material> blockWhitelist = new HashSet<>();
 	private boolean blockWhitelistEnabled;
 	
-	public boolean allowed(ItemStack stack) {
-		return !blockWhitelistEnabled || blockWhitelist.contains(stack);
+	public boolean allowed(Material type) {
+		return !blockWhitelistEnabled || blockWhitelist.contains(type);
 	}
 	
 	public void load(FileConfiguration configuration) {
@@ -27,7 +28,7 @@ public class SettingsHolder {
 			blockWhitelist.clear();
 			configuration.getStringList("pad-block-whitelist.blocks").forEach(blockName -> {
 				XMaterial.matchXMaterial(blockName).ifPresent(block -> {
-					blockWhitelist.add(block.parseItem());
+					blockWhitelist.add(block.get());
 				});
 			});
 		}

@@ -1,5 +1,6 @@
 package me.syncwrld.minecraft.launchmania.listener.impl;
 
+import com.cryptomorin.xseries.XItemStack;
 import com.cryptomorin.xseries.messages.ActionBar;
 import me.syncwrld.minecraft.launchmania.LaunchmaniaPlugin;
 import me.syncwrld.minecraft.launchmania.cache.BuilderCache;
@@ -7,12 +8,16 @@ import me.syncwrld.minecraft.launchmania.cache.LauncherCache;
 import me.syncwrld.minecraft.launchmania.config.SettingsHolder;
 import me.syncwrld.minecraft.launchmania.listener.AbstractListener;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.MaterialData;
+
+import java.util.stream.Collectors;
 
 public class BuildListener extends AbstractListener {
 	
@@ -34,13 +39,19 @@ public class BuildListener extends AbstractListener {
 		final Location location = block.getLocation();
 		if (notBuilding(player)) return;
 		
-		final MaterialData materialData = block.getState().getData();
-		if (!settingsHolder.allowed(materialData.toItemStack(1))) {
+		final Material blockType = block.getType();
+		
+		player.sendMessage(new String[]{
+		  "§dCurrent material: " + blockType.toString(),
+		  "§dList of allowed materials: \n§a▸ " + settingsHolder.blockWhitelist().stream().map(material -> material.name()).collect(Collectors.joining("\n§a ▸ "))
+		});
+		
+		if (!settingsHolder.allowed(blockType)) {
 			ActionBar.sendActionBar(player, "§cIgnoring block placement (not in whitelist).");
 			return;
 		}
 		
-		ActionBar.sendActionBar(player, "§aNew launcher created at " + keyOf(block.getLocation()));
+		ActionBar.sendActionBar(player, "§aNew launcher created at " + keyOf(location));
 		launcherCache.insert(location);
 	}
 	
@@ -57,7 +68,7 @@ public class BuildListener extends AbstractListener {
 			return;
 		}
 		
-		ActionBar.sendActionBar(player, "§cLauncher destroyed at " + keyOf(event.getBlock().getLocation()));
+		ActionBar.sendActionBar(player, "§cLauncher destroyed at " + keyOf(location));
 		launcherCache.remove(location);
 	}
 	
