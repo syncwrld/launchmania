@@ -1,7 +1,8 @@
-package me.syncwrld.minecraft.launchmania.task;
+package me.syncwrld.minecraft.launchmania.task.impl;
 
 import me.syncwrld.minecraft.launchmania.LaunchmaniaPlugin;
 import me.syncwrld.minecraft.launchmania.cache.LauncherCache;
+import me.syncwrld.minecraft.launchmania.task.AbstractRunnable;
 import org.bukkit.Bukkit;
 
 public class VisualEffectDisplayTask extends AbstractRunnable {

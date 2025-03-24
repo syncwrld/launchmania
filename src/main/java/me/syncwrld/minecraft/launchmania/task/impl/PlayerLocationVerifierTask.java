@@ -1,8 +1,9 @@
-package me.syncwrld.minecraft.launchmania.task;
+package me.syncwrld.minecraft.launchmania.task.impl;
 
 import com.cryptomorin.xseries.XSound;
 import me.syncwrld.minecraft.launchmania.LaunchmaniaPlugin;
 import me.syncwrld.minecraft.launchmania.cache.LauncherCache;
+import me.syncwrld.minecraft.launchmania.task.AbstractRunnable;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
