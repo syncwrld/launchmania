@@ -10,6 +10,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @author zyypj (tadeu)
+ */
 public class YAML extends YamlConfiguration {
     private final Plugin plugin;
     private final File configFile;
