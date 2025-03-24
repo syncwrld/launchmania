@@ -35,13 +35,7 @@ public class LaunchmaniaPlugin extends JavaPlugin {
     Utilities
      */
     private final BukkitLogger platformLogger = new BukkitLogger(this);
-    private final GitHubUpdateChecker updateChecker = new GitHubUpdateChecker(
-            this,
-            "syncwrld",
-            "launchmania",
-            30,
-            true
-    );
+    private final GitHubUpdateChecker updateChecker = new GitHubUpdateChecker(this, "syncwrld", "launchmania", 30, true);
 
     /*
     Caches and holders
@@ -86,28 +80,16 @@ public class LaunchmaniaPlugin extends JavaPlugin {
         final BuilderCache builderCache = new BuilderCache();
 
         this.particleNativeAPI = ParticleNativeCore.loadAPI(this);
-		
-		/*
-		Commands
-		 */
+        
         new LaunchmaniaCommand(this).register();
         new BuildModeCommand(this, builderCache).register();
-		
-		/*
-		Listeners
-		 */
+
         new BuildListener(this, builderCache, launcherCache, settingsHolder).register();
         new PreventionListener(this, launcherCache).register();
-		
-		/*
-		Runnables
-		 */
+
         new PlayerLocationVerifierTask(this, launcherCache).startRepeating(0, 300, TimeUnit.MILLISECONDS);
         effectTaskSetup();
-		
-		/*
-		Metrics and rest of stuff
-		 */
+
         new Metrics(this, 25212);
 
         loadLocations(launcherCache);
