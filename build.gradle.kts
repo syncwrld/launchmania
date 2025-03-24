@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.github.paperspigot:paperspigot-api:1.8.8-R0.1-SNAPSHOT")
+    compileOnly("org.spigotmc:spigot-api:1.13.2-R0.1-SNAPSHOT")
     implementation("com.github.cryptomorin:XSeries:13.1.0")
     implementation("org.bstats:bstats-bukkit:3.0.2")
     implementation("com.google.code.gson:gson:2.12.1")
