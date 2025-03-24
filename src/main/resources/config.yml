@@ -1,0 +1,42 @@
+# Options #
+pad-block-whitelist:
+  # Only certain blocks will launch the player #
+  enable: true
+  # Whitelisted blocks - ignore if enabled is false #
+  # Only blocks in this list will be able to launch the player #
+  blocks:
+    - LIME_WOOL
+    - YELLOW_WOOL
+
+# The power of the jump - bigger is stronger #
+jump-power: 1.5
+jump-front: 0.0 # Don't change this if you don't know what it does
+jump-sideways: 0.0 # Don't change this if you don't know what it does
+
+# Disable the fall damage caused by falling after a jump #
+disable-fall-damage: true
+
+# If the player is sneaking, he will not be launched #
+ignore-sneaking: true
+
+# Sound #
+jump-sound:
+  # Enable the sound when jumping on a launcher #
+  enable: true
+  # Sound type - List: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html #
+  type: 'ENTITY_SLIME_JUMP'
+  # Sound volume #
+  volume: 0.5
+  # Sound pitch #
+  pitch: 1.0
+
+# Visual #
+# Effect type can't be customized cause of a limitation on the api that I'm using #
+visual-effect:
+  # Enable the effect #
+  enable: true
+  # The player in this radius will see the effect #
+  radius: 10
+  # The update interval of the visual effect - don't change this if you don't know what it does #
+  # Available time units: https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/TimeUnit.html #
+  update-interval: '2:SECONDS'

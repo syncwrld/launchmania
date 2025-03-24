@@ -1,0 +1,6 @@
+main: me.syncwrld.minecraft.launchmania.LaunchmaniaPlugin
+name: Launchmania
+version: 1.0.0
+author: syncwrld
+api-version: "1.13"
+description: Launchmania is a plugin that adds trampolines mechanics to servers.
