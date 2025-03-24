@@ -40,12 +40,6 @@ public class BuildListener extends AbstractListener {
 		if (notBuilding(player)) return;
 		
 		final Material blockType = block.getType();
-		
-		player.sendMessage(new String[]{
-		  "§dCurrent material: " + blockType.toString(),
-		  "§dList of allowed materials: \n§a▸ " + settingsHolder.blockWhitelist().stream().map(material -> material.name()).collect(Collectors.joining("\n§a ▸ "))
-		});
-		
 		if (!settingsHolder.allowed(blockType)) {
 			ActionBar.sendActionBar(player, "§cIgnoring block placement (not in whitelist).");
 			return;
